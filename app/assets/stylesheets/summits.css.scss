@@ -1,0 +1,160 @@
+// Place all the styles related to the summits controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#show {
+  h1 {
+    padding: 0px 0px 0px 0px; 
+  }
+
+  h3 {
+    font-weight: bold; 
+  }
+  
+  .area {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  
+  .category {
+    font-weight: bold;
+  }
+  
+  .well table {
+    width: 100%;
+    
+    .symbol {
+      width: 128px;
+      height: 128px;
+    }
+        
+    h1 {
+      font-size: 4em;
+    }
+    
+    p {
+      font-size: 2em;
+      color: $gray-light;
+      margin: 0;
+    }
+    
+    .application-deadline {
+      font-size: 3em;
+    }
+  }
+  
+  .well td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .well tr:last-of-type td {
+    vertical-align: bottom;
+  }
+  
+  .application_deadline > h1 {
+    font-size: 3.5em; 
+  }
+  
+  .back-link{
+    background-color: $text-color;
+    color: white;
+  }
+  
+  .back-link:hover {
+    text-decoration: none; 
+  }
+    
+}
+
+.table-links {
+  display: table;
+    
+  .thead {
+    display: table-header-group;
+  }
+  
+  .tbody {
+    display: table-row-group;
+  }
+  
+  // STANDARD ROW
+  .tbody > a,
+  .thead > a {
+    display: table-row;
+    
+    // STANDARD CELL
+    div {
+      padding: $padding-base-vertical $padding-base-horizontal;
+      display: table-cell;
+      color: $text-color2;
+      //white-space: pre-line;
+    }
+    
+    /*div:first-of-type {
+      @media (min-width: $screen-md-min) {
+        padding-left: 50px !important;
+      }
+      border-left: none;
+    }*/
+  }
+  
+  .tbody > a:nth-child(2n+1) > div {
+    background-color: lighten($background-color, 10%);
+  }
+  
+  // remove text decoration
+  a:hover, a:focus {
+    text-decoration: none; 
+  }
+    
+  // white highlight on mouse over
+  .tbody > a:hover > div,
+  .tbody > a:focus > div {
+      background-color: lighten($text-color, 20%) !important; 
+  }
+  
+  // TABLE HEADER
+  .thead > a {
+    
+    div {
+      border-left: 1px solid $text-color;
+      border-bottom: 2px solid $text-color;
+      border-top: 1px solid $gray-lighter;
+      background: -webkit-linear-gradient(rgba(255, 255, 255, 1.0),rgba($text-color, .3) ); /* For Safari 5.1 to 6.0 */
+      background: -o-linear-gradient(rgba(255, 255, 255, 1.0),rgba($text-color, .3) ); /* For Opera 11.1 to 12.0 */
+      background: -moz-linear-gradient(rgba(255, 255, 255, 1.0),rgba($text-color, .3) ); /* For Firefox 3.6 to 15 */
+      background: linear-gradient(rgba(255, 255, 255, 1.0),rgba($text-color, .3) ); /* Standard syntax */
+      font-weight: bold;
+      cursor: pointer;
+      
+      // prevent selectability
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    div:not(:first-of-type):hover {
+      background-color: $text-color; 
+    }
+    
+    div:first-of-type {
+      width: 20px; // limit width of settings button to 20px 
+    }
+    
+    // left site settings button
+    div:first-of-type,
+    div:nth-child(2) {
+      border-left: none; 
+    }
+  }
+  
+}
+
+
+.fa.text-muted {
+  color: $gray-lighter;
+}

@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  deadline: MyText
+  location_city: MyString
+  location_country: MyString
+  language: MyString
+  date_start: 
+  date_end: 
+  cost: 1
+  currency: MyString
+  fields: MyText
+  idea_stage: false
+  planning_stage: false
+  implementation_stage: false
+  operating_stage: false
+  contact_website: MyString
+  contact_email: MyString
+  admin_email: MyString
+  admin_url: MyString
+
+two:
+  name: MyString
+  deadline: MyText
+  location_city: MyString
+  location_country: MyString
+  language: MyString
+  date_start: 
+  date_end: 
+  cost: 1
+  currency: MyString
+  fields: MyText
+  idea_stage: false
+  planning_stage: false
+  implementation_stage: false
+  operating_stage: false
+  contact_website: MyString
+  contact_email: MyString
+  admin_email: MyString
+  admin_url: MyString

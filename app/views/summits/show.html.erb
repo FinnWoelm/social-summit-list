@@ -1,0 +1,116 @@
+<div id="show">
+  <div class="area">
+    <div class="row">
+      <h1 class="text-center"><%= @summit.name %></h1>
+      <% if !@summit.contact_website.blank? %>
+      <h3 class="text-center"><i class="fa fa-globe"></i> <%= link_to @summit.contact_website, @summit.contact_website, :target => "_blank" %></h3>
+      <% end %>
+      <% if !@summit.contact_email.blank? %>
+      <h3 class="text-center"><i class="fa fa-envelope"></i> <%= mail_to @summit.contact_email, @summit.contact_email, :target => "_blank" %></h3>
+      <% end %>
+      <h3 class="text-center"><br/><%= @summit.date_start.strftime("%b %d, %Y") + " - " + @summit.date_end.strftime("%b %d, %Y") %> <small>in</small> <%= @summit.location_city + ", " + (!@summit.location_state.blank? ? @summit.location_state + ", " : "") + @summit.location_country %></h3>
+    </div>
+  </div>
+  
+  <%# free icons from https://www.iconfinder.com/icons/206467/analytics_keynote_note_notes_icon#size=128
+%>
+  
+  <div class="area">
+    <div class="row">
+      <h1 class="text-center"><i class="fa fa-heart"></i> Quick Facts</h1>
+    </div>
+    <br/><br/><br/>
+    <div class="row">
+
+      <div class="col-md-5 well">
+        <table>
+          <tr>
+            <td rowspan="2" class="symbol">
+              <%= image_tag("money.png") %>
+            </td>
+            <td>
+              <h1 class="text-center cost">
+                <%= @summit.currency + @summit.cost.to_s %>
+              </h1>
+            </td>
+          </tr>
+          <tr>
+            <td><p>Cost</p></td>
+          </tr>
+        </table>          
+      </div>
+
+      <div class="col-md-5 col-md-push-2 well">
+        <table>
+          <tr>
+            <td rowspan="2" class="symbol">
+              <%= image_tag("application.png") %>
+            </td>
+            <td>
+              <h1 class="text-center application-deadline">
+                <% deadline = ActiveSupport::JSON.decode(@summit.deadline) %>
+                <%= Time.parse(deadline["content"][0]["date"]).strftime("%b %d, %Y") %>
+              </h1>
+            </td>
+          </tr>
+          <tr>
+            <td><p>Application Deadline</p></td>
+          </tr>
+        </table> 
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-5 well">
+        <table>
+          <tr>
+            <td rowspan="2" class="symbol">
+              <%= image_tag("fields.png") %>
+            </td>
+            <td>
+              <h1 class="text-center fields">
+                <%= @summit.fields %>
+              </h1>
+            </td>
+          </tr>
+          <tr>
+            <td><p>Fields</p></td>
+          </tr>
+        </table>          
+      </div>
+
+      <div class="col-md-5 col-md-push-2 well">
+        <table>
+          <tr>
+            <td rowspan="2" class="symbol">
+              <%= image_tag("stages.png") %>
+            </td>
+            <td>
+              <h1 class="text-center stages">
+                <i class="btn-xs fa fa-lightbulb-o <%= @summit.idea_stage ? '' : 'text-muted' %>" title="Idea Stage"></i>
+                <i class="btn-xs fa fa-file-text-o <%= @summit.planning_stage ? '' : 'text-muted' %>" title="Planning Stage"></i>
+                <i class="btn-xs fa fa-suitcase <%= @summit.implementation_stage ? '' : 'text-muted' %>" title="Implementation Stage"></i>
+                <i class="btn-xs fa fa-truck <%= @summit.operating_stage ? '' : 'text-muted' %>" title="Launched & Running"></i>
+              </h1>
+            </td>
+          </tr>
+          <tr>
+            <td><p>Project Stages</p></td>
+          </tr>
+        </table> 
+      </div>
+
+    </div>    
+
+  <%= link_to 'Edit', edit_summit_path(@summit) %> |
+  <%= link_to 'Back', summits_path %>
+  </div>
+  
+  <%= link_to summits_path, :class => "back-link" do %>
+    <div class="back-link area">
+      <h1 class="text-center"><i class="fa fa-long-arrow-left"></i> Back to List</h1>
+    </div>
+  <% end %>
+</div>
