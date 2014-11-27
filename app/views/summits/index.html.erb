@@ -12,7 +12,7 @@
   </div>
 </div>
 
-<div class="area">
+<div class="area no-padding">
   <h1 class="text-center">Summit Listing</h1>
   <div class="table-responsive">
     <div class="table table-hover table-striped table-links">
@@ -71,4 +71,29 @@
     </div>  
   </div>
 </div>
-<br>
+
+<%# icons from https://www.iconfinder.com/iconsets/49handdrawing
+%>
+
+<div class="area">
+  <div class="row">
+    <div class="col-sm-4 col-md-4 text-center">
+      <%= image_tag "heart.png"%>
+      <h3>Made with Love</h3>
+      <p>This platform was built because of a belief in the goodness entrepreneurs bring to the world. 100% love, 0% commercialization.</p>
+    </div>
+    
+    <div class="col-sm-4 col-md-4 text-center">
+      <%= image_tag "collective.png"%>
+      <h3>Collectively Owned</h3>
+      <p>There is no one owner of this listing. The list as well as the code are maintained collectively by the community.</p>
+    </div>
+    
+    <div class="col-sm-4 col-md-4 text-center">
+      <%= image_tag "world.png"%>
+      <h3>Open Source</h3>
+      <p>The entire code is accessible on Github, and you are most welcome to copy, remix, and redistribute.</p>
+    </div>
+  </div>
+
+</div>
