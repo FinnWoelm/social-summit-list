@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: social-summit-list_production
-  username: social-summit-list
-  password: <%= ENV['SOCIAL-SUMMIT-LIST_DATABASE_PASSWORD'] %>
+  database: socialsummitlist_production
+  username: socialsummitlist
+  password: <%= ENV['SOCIALSUMMITLIST_DATABASE_PASSWORD'] %>

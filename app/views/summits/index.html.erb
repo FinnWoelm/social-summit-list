@@ -1,14 +1,12 @@
 <div class="area">
   <h1 class="text-center">Find awesome entrepreneurship summits around the world!</h1>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 col-xs-2"></div>
-      <div class="col-md-6 col-xs-8">
-        <%= link_to "Add my Summit!", new_summit_path, :class => "btn btn-lg btn-primary btn-block" %>
-      </div>  
-      <div class="col-md-3 col-xs-2"></div>
-    </div>
+  <div class="row">
+    <div class="col-md-3 col-xs-2"></div>
+    <div class="col-md-6 col-xs-8">
+      <%= link_to "Add my Summit!", new_summit_path, :class => "btn btn-lg btn-primary btn-block" %>
+    </div>  
+    <div class="col-md-3 col-xs-2"></div>
   </div>
 </div>
 
@@ -50,7 +48,7 @@
             <div class="summit-location"><span class="data"><%= summit.location_country %>, <%= summit.location_city %></span></div>
             <div class="summit-language"><span class="data"><%= summit.language %></span></div>
             <div class="summit-startdate"><%= summit.date_start.strftime("%b %d, %Y") %><span class="data" style="display: none;"><%= summit.date_start.to_time.to_i %></span></div>
-            <div class="summit-duration"><span class="data"><%= (summit.date_end - summit.date_start).to_i %></span> days</div>
+            <div class="summit-duration"><span class="data"><%= (summit.date_end - summit.date_start + 1).to_i %></span> day(s)</div>
             <div class="summit-cost"><span class="data"><%= summit.currency %><%= summit.cost %></span></div>
             <div class="summit-fields"><span class="data"><%= summit.fields %></span></div>
             <div class="summit-project_stages">
