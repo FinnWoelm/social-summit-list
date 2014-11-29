@@ -18,7 +18,7 @@
     <div class="table table-hover table-striped table-links">
       <div class="thead">  
         <a>
-          <div><button class="btn btn-xs btn-primary"><i class="fa fa-cog"></i></button></div>
+          <div><!--<button class="btn btn-xs btn-primary"><i class="fa fa-cog"></i></button>--></div>
           <div class="sortable" data-sort_by="summit-name" data-sort_type="abc">Name</div>
           <div class="sortable" data-sort_by="summit-deadline" data-sort_type="number">App. Deadline</div>
           <div class="sortable" data-sort_by="summit-location" data-sort_type="abc">Location</div>
@@ -40,7 +40,10 @@
             <div class="summit-deadline">
                 <% deadline = ActiveSupport::JSON.decode(summit.deadline) %>
                 <% deadline["content"].each do |d| %>
-                  <%= d["text"] + ": " + Time.parse(d["date"]).strftime("%b %d, %Y") %><br/>
+                  <% if d["text"].length > 0 %>
+                    <%= d["text"] + ": " %>
+                  <% end %>
+                  <%= Time.parse(d["date"]).strftime("%b %d, %Y") %><br/>
                 <% end %>
                 <span class="data" style="display:none;"><%= Time.parse(deadline["content"][0]["date"]).to_time.to_i %></span>
             </div>
