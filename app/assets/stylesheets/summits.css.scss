@@ -2,6 +2,126 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#edit {
+  
+  .back-link {
+    border: none;
+    width: 100%;
+    font-size: 4em;
+  }
+  
+  label {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
+  label.normal {
+    font-weight: normal;
+    text-decoration: none;
+  }
+  
+  .form-group:last-of-type {
+    margin-bottom: 0px; 
+  }
+  
+  .field_with_errors {
+    display: inline; 
+    
+    input, textarea {
+      border-color: red;
+    }
+  }
+  
+  .form-control {
+    display: inline;
+  }
+  
+  input {
+  }
+  
+  .input-hidden input,
+  .input-hidden select {
+    border: none;
+    box-shadow: none;
+    background-color: inherit;
+    text-align: center;
+    width: 100%;
+    font-size: inherit;
+  }
+  
+  .input-hidden select {
+    height: 50px; 
+  }
+  
+  .input-hidden .field_with_errors input {
+    border: 1px solid red; 
+    border-radius: 4px;
+  }
+  
+  .datetimepicker {
+    //text-align: left;
+    display: inline;
+    width: 150px !important;
+    //width: 150px;
+  }
+  
+  .split-3 input, .split-3 select {
+    width: 30%; 
+  }
+  
+  h1 {
+    padding: 0px 0px 10px 0px; 
+  }
+
+  h3 {
+    font-weight: bold;
+    margin: 0 0 10px 0;
+  }
+  
+  .area {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  
+  .category {
+    font-weight: bold;
+  }
+  
+  .back-link{
+    background-color: $text-color;
+    color: white;
+  }
+  
+  .back-link:hover {
+    text-decoration: none; 
+  }
+  
+  .facts {
+    
+    table {
+      width: 100%;
+      
+      td:first-of-type {
+        width: 40px;
+        padding-right: 15px;
+      }
+    }
+    
+    img {
+      width: 40px;
+      height: 40px;
+      float: left;
+    }
+    
+    td {
+      vertical-align: top;
+      text-align: left;
+    }
+  
+  }
+    
+}
+
 #show {
   h1 {
     padding: 0px 0px 0px 0px; 

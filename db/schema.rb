@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20141126161543) do
   create_table "summits", force: true do |t|
     t.string   "name",                                 null: false
     t.text     "deadline",                             null: false
+    t.string   "application_link"
     t.string   "location_city",                        null: false
     t.string   "location_state"
     t.string   "location_country",                     null: false

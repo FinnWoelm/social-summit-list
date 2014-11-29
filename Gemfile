@@ -12,6 +12,10 @@ gem 'sass-rails', '>= 3.2'
 gem 'autoprefixer-rails' # It is also recommended to use Autoprefixer with Bootstrap to add browser vendor prefixes automatically
 gem "font-awesome-rails" # install fontawesome
 
+#Bootstrap date picker: https://github.com/TrevorS/bootstrap3-datetimepicker-rails
+gem 'momentjs-rails', '>= 2.8.1'
+gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -21,6 +25,8 @@ gem 'uglifier', '>= 1.3.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+# Use jquery ui in addition to jquery
+gem 'jquery-ui-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Re-active the document.ready function for jQuery

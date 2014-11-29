@@ -25,14 +25,21 @@ class SummitsController < ApplicationController
   # POST /summits.json
   def create
     @summit = Summit.new(summit_params)
-
+    
+    @summit.currency = "$"
+    @summit.location_country = "USA"
+    
+    @summit.deadline = create_deadline_json
+    @summit.admin_email = "test"
+    @summit.admin_url = "test"
+    
     respond_to do |format|
       if @summit.save
         format.html { redirect_to @summit, notice: 'Summit was successfully created.' }
-        format.json { render :show, status: :created, location: @summit }
+        #format.json { render :show, status: :created, location: @summit }
       else
         format.html { render :new }
-        format.json { render json: @summit.errors, status: :unprocessable_entity }
+        #format.json { render json: @summit.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,10 +50,10 @@ class SummitsController < ApplicationController
     respond_to do |format|
       if @summit.update(summit_params)
         format.html { redirect_to @summit, notice: 'Summit was successfully updated.' }
-        format.json { render :show, status: :ok, location: @summit }
+        #format.json { render :show, status: :ok, location: @summit }
       else
         format.html { render :edit }
-        format.json { render json: @summit.errors, status: :unprocessable_entity }
+        #format.json { render json: @summit.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -66,9 +73,23 @@ class SummitsController < ApplicationController
     def set_summit
       @summit = Summit.find(params[:id])
     end
+  
+    def create_deadline_json
+      unencoded = '{ "content": ['
+      if(params["deadline"]["dates"].size == 1)
+        unencoded += '{ "text": "", "date": "'+ params["deadline"]["dates"][0] + '"} '
+      else
+        params["deadline"]["labels"].each_with_index do |deadline, index|
+          unencoded += '{ "text": "' + deadline + '", "date": "'+ params["deadline"]["dates"][index] + '"},'
+        end
+      end
+      unencoded = unencoded[0..-2]+"]}"
+      return unencoded
+    end
+  
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def summit_params
-      params.require(:summit).permit(:name, :deadline, :location_city, :location_country, :language, :date_start, :date_end, :cost, :currency, :fields, :idea_stage, :planning_stage, :implementation_stage, :operating_stage, :contact_website, :contact_email, :admin_email, :admin_url)
+      params.require(:summit).permit(:name, :deadline, :application_link, :location_city, :location_state, :location_country, :language, :date_start, :date_end, :cost, :currency, :fields, :idea_stage, :planning_stage, :implementation_stage, :operating_stage, :description, :contact_website, :contact_email, :admin_email, :admin_url)
     end
 end

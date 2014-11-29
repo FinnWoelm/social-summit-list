@@ -45,7 +45,9 @@
                 <b><u>Application</u></b><br>
                 <% deadline = ActiveSupport::JSON.decode(@summit.deadline) %>
                 Deadline: <%= Time.parse(deadline["content"][0]["date"]).strftime("%b %d, %Y") %><br/>
-                Link: <a>Apply now!</a>
+                <% if @summit.application_link %>
+                Link: <a href="<%= @summit.application_link %>" target="_blank">Apply now!</a>
+                <% end %>
               </td>
             </tr>
             <tr><td colspan="2"><hr/></td></tr>
@@ -70,10 +72,10 @@
                   <i class="btn-xs fa fa-file-text-o" title="Planning Stage"></i> Planning Stage<br/>
                 <% end %>
                 <% if @summit.implementation_stage %>
-                  <i class="btn-xs fa fa-file-text-o" title="Implementation Stage"></i> Implementation Stage<br/>
+                  <i class="btn-xs fa fa-suitcase" title="Implementation Stage"></i> Implementation Stage<br/>
                 <% end %>
                 <% if @summit.operating_stage %>
-                  <i class="btn-xs fa fa-file-text-o" title="Launched & Running"></i> Running &amp; Launched<br/>
+                  <i class="btn-xs fa fa-truck" title="Launched & Running"></i> Running &amp; Launched<br/>
                 <% end %>
               </td>
             </tr>
@@ -98,14 +100,14 @@
           <b><u>Description</u></b><br/>
           <%= @summit.description %>
           
-          <hr/>
+          <!--<hr/>
           
           <b><u>Requirements</u></b><br/>
           <% if @summit.requirements == nil %>
             No requirements.
           <% else %>
             <%= @summit.requirements %>
-          <% end %>
+          <% end %>-->
         </div>
       </div>
     </div>

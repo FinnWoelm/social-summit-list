@@ -1,5 +1,68 @@
 $(document).ready(function(){
   
+  
+  /// ON NEW SUMMIT PAGE //
+  if ($(".datetimepicker").length > 0) {
+    
+    today = new Date();
+    day = $.datepicker.formatDate('dd', today);
+    month = $.datepicker.formatDate('mm', today);
+    year = parseInt($.datepicker.formatDate('yy', today));
+    
+    $(".datetimepicker").each(function () {
+      initializePicker($(this));
+    });
+  }
+  
+  function initializePicker(element) {
+    element.datetimepicker({
+      pickTime: false,
+      showToday: true,
+      minDate: year+'/'+month+'/'+day,
+      maxDate: (year+3)+'/'+month+'/'+day,
+     // defaultDate: year+'/'+month+'/'+day,
+      icons: {
+        time: "fa fa-clock-o",
+        date: "fa fa-calendar",
+        up: "fa fa-arrow-up",
+        down: "fa fa-arrow-down"
+      }
+    }); 
+  }
+
+  
+  if ($("#addDeadline").length > 0) {
+    
+    if($("#addDeadline").siblings(".application-deadline").length == 1) {
+      $("#addDeadline").siblings(".application-deadline").first().children(".form-control").first().hide();
+    }
+    
+    // DISABLE MYSELF
+    $("#addDeadline").remove();
+      
+    $("#addDeadline").click(function () {
+      if($(this).siblings(".application-deadline").length < 5) {
+        
+        // make sure first label field is shown
+        $(this).siblings(".application-deadline").first().children(".form-control").first().show();
+        
+        // then clone
+        new_element = $(this).prev().clone();
+        initializePicker(new_element.children(".datetimepicker").first());
+        $(this).before("<hr/>");
+        $(this).before(new_element);
+
+        
+        // limit to five application deadlines
+        if($(this).siblings(".application-deadline").length == 5) {
+          $(this).remove(); 
+        }
+      }
+    });
+  }
+  
+  
+  /// ON INDEX PAGE ///
   if ($(".sortable").length > 0) {
     $(".sortable").each(function () {
 

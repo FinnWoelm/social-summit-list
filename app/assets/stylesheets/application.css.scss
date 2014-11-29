@@ -19,10 +19,12 @@ $text-color2: darken(#428bca, 20%);
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'bootstrap-datetimepicker';
+@import 'jquery-ui/datepicker';
 @import "font-awesome";
 @import 'summits';
 
-h1::selection, p::selection, th::selection, td::selection, a::selection, div::selection {
+h1::selection, p::selection, th::selection, td::selection, a::selection, div::selection, input::selection {
   background-color: $text-color;
   color: white;
 }
@@ -49,11 +51,17 @@ body {
 
 .area:nth-child(3n+1) {
   background-color: $background-color; 
+  input, select {
+    color: $text-color; 
+  }
 }
 
 .area:nth-child(3n+2) {
   background-color: $background-color2;
   color: $text-color2;
+  input, select {
+    color: $text-color2 !important; 
+  }
 }
 
 .area:last-of-type {

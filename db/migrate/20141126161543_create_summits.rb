@@ -3,6 +3,7 @@ class CreateSummits < ActiveRecord::Migration
     create_table :summits do |t|
       t.string :name, :null => false
       t.text :deadline, :null => false
+      t.string :application_link, :null => true, :default => nil
       t.string :location_city, :null => false
       t.string :location_state, :null => true, :default => nil
       t.string :location_country, :null => false
