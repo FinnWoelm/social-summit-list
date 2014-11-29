@@ -24,7 +24,7 @@ $text-color2: darken(#428bca, 20%);
 @import "font-awesome";
 @import 'summits';
 
-h1::selection, p::selection, th::selection, td::selection, a::selection, div::selection, input::selection {
+h1::selection, h2::selection, h3::selection, p::selection, th::selection, td::selection, a::selection, div::selection, input::selection, span::selection, img::selection {
   background-color: $text-color;
   color: white;
 }
