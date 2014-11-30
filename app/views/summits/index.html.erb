@@ -45,7 +45,7 @@
                 <% end %>
                 <span class="data" style="display:none;"><%= Time.parse(deadline["content"][0]["date"]).to_time.to_i %></span>
             </div>
-            <div class="summit-location"><span class="data"><%= summit.location_country %>, <%= summit.location_city %></span></div>
+            <div class="summit-location"><span class="data"><%= summit.location_country %>, <%= summit.location_state %>, <%= summit.location_city %></span></div>
             <div class="summit-language"><span class="data"><%= summit.language %></span></div>
             <div class="summit-startdate"><%= summit.date_start.strftime("%b %d, %Y") %><span class="data" style="display: none;"><%= summit.date_start.to_time.to_i %></span></div>
             <div class="summit-duration"><span class="data"><%= (summit.date_end - summit.date_start + 1).to_i %></span> day(s)</div>
