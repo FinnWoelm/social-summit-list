@@ -49,7 +49,7 @@
             <div class="summit-language"><span class="data"><%= summit.language %></span></div>
             <div class="summit-startdate"><%= summit.date_start.strftime("%b %d, %Y") %><span class="data" style="display: none;"><%= summit.date_start.to_time.to_i %></span></div>
             <div class="summit-duration"><span class="data"><%= (summit.date_end - summit.date_start + 1).to_i %></span> day(s)</div>
-            <div class="summit-cost"><span class="data"><%= summit.currency %><%= summit.cost %></span></div>
+            <div class="summit-cost"><%= summit.currency %><span class="data"><%= summit.cost %></span></div>
             <div class="summit-fields"><span class="data"><%= summit.fields %></span></div>
             <div class="summit-project_stages">
               <i class="btn-xs fa fa-lightbulb-o <%= summit.idea_stage ? '' : 'text-muted' %>" title="Idea Stage"></i>

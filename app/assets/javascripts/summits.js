@@ -123,8 +123,9 @@ $(document).ready(function(){
     // unless it was already sorted, sort the array now
     if(!already_sorted) {
       summitList = summitList.sort(function (a, b) {
+        //alert(a.val + " vs " + b.val);
         if(sort_type == "number")
-          return a.val > b.val;
+          return a.val - b.val;
         else if(sort_type == "abc")
           return a.val.localeCompare( b.val ); //sorting array
       });
