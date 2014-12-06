@@ -19,13 +19,13 @@ class SummitsController < ApplicationController
   end
 
   # GET /summits/1/edit
-  def edit
-    if Summit.exists?(:edit_code => params[:edit_code])
-      @summit = Summit.find_by(:edit_code => params[:edit_code])
-    else
-      render('not-found')
-    end
-  end
+  #def edit
+  ##  if Summit.exists?(:edit_code => params[:edit_code])
+  #    @summit = Summit.find_by(:edit_code => params[:edit_code])
+  #  else
+  #    render('not-found')
+  #  end
+  #end
 
   # POST /summits
   # POST /summits.json
@@ -53,14 +53,25 @@ class SummitsController < ApplicationController
   # PATCH/PUT /summits/1
   # PATCH/PUT /summits/1.json
   def update
-    respond_to do |format|
-      if @summit.update(summit_params)
-        format.html { redirect_to @summit, notice: 'Summit was successfully updated.' }
-        #format.json { render :show, status: :ok, location: @summit }
-      else
-        format.html { render :edit }
-        #format.json { render json: @summit.errors, status: :unprocessable_entity }
+    if session[:edit_code].present? && session[:edit_code] == @summit.edit_code
+      @summit.currency = "$"
+      @summit.location_country = "USA"
+
+      @summit.deadline = create_deadline_json
+      @summit.admin_email = "test"
+      @summit.admin_url = "test"
+
+      respond_to do |format|
+        if @summit.update(summit_params)
+          # log out && redirect
+          reset_session
+          format.html { redirect_to @summit, notice: 'Summit was successfully updated.' }
+        else
+          format.html { render :edit }
+        end
       end
+    else
+      redirect_to @summit
     end
   end
 

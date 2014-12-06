@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :summits, :except => [:edit, :update, :delete, :destroy]
+  resources :summits, :except => [:edit, :delete, :destroy]
 
   # path for editing a summit
-  get 'summits/edit/:edit_code' => 'summits#edit', as: :edit_summit
+  get 'edit/:edit_code'                 => 'edit#edit', as: :edit_summit
+  get 'edit/:edit_code/login'           => 'edit#login'
+  match 'edit/:edit_code/attempt_login' => 'edit#attempt_login', :via => :post
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
