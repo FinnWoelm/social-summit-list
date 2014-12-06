@@ -15,6 +15,7 @@ class SummitsController < ApplicationController
   # GET /summits/new
   def new
     @summit = Summit.new
+    send_edit_code
   end
 
   # GET /summits/1/edit
@@ -67,7 +68,7 @@ class SummitsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_summit
@@ -92,4 +93,23 @@ class SummitsController < ApplicationController
     def summit_params
       params.require(:summit).permit(:name, :deadline, :application_link, :location_city, :location_state, :location_country, :language, :date_start, :date_end, :cost, :currency, :fields, :idea_stage, :planning_stage, :implementation_stage, :operating_stage, :description, :contact_website, :contact_email, :admin_email, :admin_url)
     end
+  
+  def send_edit_code
+    require 'mandrill'  
+    m = Mandrill::API.new
+    message = {
+     :subject=> "Your Social Summit Edit Code",  
+     :from_name=> "Social Summit List",
+     :from_email=>"info@summits.social-change.net",
+     :to=>[  
+       {  
+         :email=> "finn.woelm@gmail.com",  
+         :name=> "Finn"  
+       }  
+     ],  
+    :html=>render_to_string('emails/new_edit_code', :layout => false) 
+    }  
+    sending = m.messages.send message  
+    puts sending
+  end
 end

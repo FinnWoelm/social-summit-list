@@ -45,6 +45,9 @@ gem 'spring',        group: :development
 # Use unicorn as the app server
 gem 'unicorn'
 
+# Mandrill E-Mail
+gem 'mandrill-api'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
