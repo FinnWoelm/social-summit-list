@@ -95,10 +95,13 @@ class SummitsController < ApplicationController
     end
   
   def send_edit_code
+    
+    @first_name = "lol"
+    
     require 'mandrill'  
     m = Mandrill::API.new
     message = {
-     :subject=> "Your Social Summit Edit Code",  
+     :subject=> "Your Summit Edit Code",  
      :from_name=> "Social Summit List",
      :from_email=>"info@summits.social-change.net",
      :to=>[  
