@@ -1,5 +1,5 @@
 class SummitsController < ApplicationController
-  before_action :set_summit, only: [:show, :edit, :update, :destroy]
+  before_action :set_summit, only: [:show, :update, :destroy]
 
   # GET /summits
   # GET /summits.json
@@ -20,6 +20,11 @@ class SummitsController < ApplicationController
 
   # GET /summits/1/edit
   def edit
+    if Summit.exists?(:edit_code => params[:edit_code])
+      @summit = Summit.find_by(:edit_code => params[:edit_code])
+    else
+      render('not-found')
+    end
   end
 
   # POST /summits

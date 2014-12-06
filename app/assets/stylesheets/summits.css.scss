@@ -271,3 +271,12 @@
 .summit-project_stages {
   white-space: nowrap;
 }
+
+  .back-link{
+    background-color: $text-color;
+    color: white;
+  }
+  
+  .back-link:hover {
+    text-decoration: none; 
+  }

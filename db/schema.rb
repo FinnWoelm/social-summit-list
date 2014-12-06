@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126161543) do
+ActiveRecord::Schema.define(version: 20141206043234) do
 
   create_table "summits", force: true do |t|
     t.string   "name",                                 null: false
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20141126161543) do
     t.text     "requirements"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "edit_code"
   end
 
 end
