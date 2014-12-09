@@ -14,8 +14,6 @@
       <div class="col-md-6 col-md-push-3">
         <%= form_tag({action: "attempt_login", edit_code: params[:edit_code]}, method: "post") do %>
           
-          <%#= hidden_field_tag :edit_code, params[:edit_code]
-  %>
           <div class="form-group">
             <%= label_tag(:email, "Your e-mail address:") %>
             <%= text_field_tag(:email, "", {:class => "form-control"}) %>

@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  resources :summits, :except => [:edit, :delete, :destroy]
+  
 
+  get 'summits/new_public_summit'     => 'summits#new_public', as: :new_public_summit
+  match 'summits/new_private_summit'  => 'summits#new_private', :via => :post, as: :new_private_summit
+  resources :summits, :except => [:edit, :delete, :destroy]
+  
+  
   # path for editing a summit
   get 'edit/:edit_code'                 => 'edit#edit', as: :edit_summit
   get 'edit/:edit_code/login'           => 'edit#login'

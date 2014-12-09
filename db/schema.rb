@@ -11,34 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206043234) do
+ActiveRecord::Schema.define(version: 20141208023621) do
 
   create_table "summits", force: true do |t|
-    t.string   "name",                                 null: false
-    t.text     "deadline",                             null: false
+    t.string   "name"
+    t.text     "deadline"
     t.string   "application_link"
-    t.string   "location_city",                        null: false
+    t.string   "location_city"
     t.string   "location_state"
-    t.string   "location_country",                     null: false
-    t.string   "language",                             null: false
-    t.date     "date_start",                           null: false
-    t.date     "date_end",                             null: false
-    t.integer  "cost",                                 null: false
-    t.string   "currency",                             null: false
-    t.text     "fields",                               null: false
+    t.string   "location_country"
+    t.string   "language"
+    t.date     "date_start"
+    t.date     "date_end"
+    t.integer  "cost"
+    t.string   "currency"
+    t.text     "fields"
     t.boolean  "idea_stage",           default: false, null: false
     t.boolean  "planning_stage",       default: false, null: false
     t.boolean  "implementation_stage", default: false, null: false
     t.boolean  "operating_stage",      default: false, null: false
     t.string   "contact_website"
     t.string   "contact_email"
-    t.string   "admin_email",                          null: false
-    t.string   "admin_url",                            null: false
-    t.text     "description",                          null: false
+    t.string   "admin_email"
+    t.text     "description"
     t.text     "requirements"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "edit_code"
+    t.boolean  "published",            default: false, null: false
   end
 
 end
