@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
 
-  get 'summits/new_public_summit'     => 'summits#new_public', as: :new_public_summit
+  #get 'summits/new_public_summit'     => 'summits#new_public', as: :new_public_summit
   # no private summits as of right now
   #match 'summits/new_private_summit'  => 'summits#new_private', :via => :post, as: :new_private_summit
   resources :summits, :except => [:delete, :destroy]

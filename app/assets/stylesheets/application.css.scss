@@ -58,15 +58,16 @@ body {
 
 .area:nth-child(3n+1) {
   background-color: darken($background-color, 0%);; 
-  input, select {
-    color: $highlight-color; 
+  input, textarea, select {
+    color: white;
+    //color: $highlight-color; 
   }
 }
 
 .area:nth-child(3n+2) {
   background-color: darken($background-color2, 10%);
   color: $text-color2;
-  input, select {
+  input, textarea, select {
     color: $highlight-color-2 !important; 
   }
 }
@@ -91,4 +92,10 @@ body {
     color: lighten($background-color2, 10%);
     font-weight: bold;
   }
+}
+
+
+// fix for datepicker
+.bootstrap-datetimepicker-widget.dropdown-menu.bottom {
+  color: $background-color;
 }

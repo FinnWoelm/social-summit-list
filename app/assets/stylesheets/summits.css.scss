@@ -2,12 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#edit {
+#show, #edit {
   
-  .back-link {
+  .back-link{
+    background-color: $text-color;
+    color: $background-color;
     border: none;
     width: 100%;
-    font-size: 4em;
+  }
+  
+  .back-link h1, input.back-link {
+   
+      font-size: 4em; 
+  }
+  
+  .back-link:hover {
+    text-decoration: none; 
+  } 
+  
+}
+
+#edit {
+  
+  small {
+    color: $background-color2; 
   }
   
   label {
@@ -87,15 +105,6 @@
     font-weight: bold;
   }
   
-  .back-link{
-    background-color: $text-color;
-    color: white;
-  }
-  
-  .back-link:hover {
-    text-decoration: none; 
-  }
-  
   .facts {
     
     table {
@@ -144,16 +153,6 @@
   .category {
     font-weight: bold;
   }
-  
-  .back-link{
-    background-color: $text-color;
-    color: $background-color;
-  }
-  
-  .back-link:hover {
-    text-decoration: none; 
-  }
-
 
   hr {
     border-color: $background-color2;    
@@ -276,7 +275,7 @@
 
 
 .fa.text-muted {
-  color: $gray-lighter;
+  color: rgba(255, 255, 255, .1);
 }
 
 .summit-project_stages {

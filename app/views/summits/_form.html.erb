@@ -1,9 +1,9 @@
 <%= form_for(@summit) do |f| %>
   
-  <div class="area" style='<%= !@summit.errors.any? ? "display:none;" : "" %>' >
+  <div class="area back-link" style='<%= !@summit.errors.any? ? "display:none;" : "" %>' >
     <% if @summit.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@summit.errors.count, "error") %> prohibited this summit from being published:</h2>
+      <h2><%= pluralize(@summit.errors.count, "error") %> prohibited this summit from being saved:</h2>
 
       <ul>
       <% @summit.errors.full_messages.each do |message| %>
@@ -41,7 +41,12 @@
       </div>
       <div class="col-md-5 split-3">
         <h3 class="text-center">
-          <%= f.text_field :location_city, :placeholder => "City" %>, <%= f.select :location_state, options_for_select(us_states), {}, {:class => "form-control"} %>, USA
+          <div class="form-group" style="display: inline;">
+            <%= f.text_field :location_city, :placeholder => "City" %>
+          </div>,
+          <div class="form-group" style="display: inline;">
+            <%= f.select :location_state, options_for_select(us_states), {}, {:class => "form-control"} %>
+          </div>, USA
         </h3>
       </div>
 

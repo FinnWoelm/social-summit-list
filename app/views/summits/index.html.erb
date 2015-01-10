@@ -10,6 +10,14 @@
   </div>
 </div>
 
+<div style="display:hidden;">
+</div>
+<div class="area">
+  <p><b><u>Search Filters</u></b></p>
+  <a>Add Filter...</a>
+</div>
+<div style="display:hidden;"></div>
+
 <div class="area no-padding">
   <!--<h1 class="text-center">Summit Listing</h1>-->
   <div class="table-responsive">
@@ -36,14 +44,14 @@
             <div></div>
             <div class="summit-name"><span class="data"><%= summit.name %></span></div>
             <div class="summit-deadline">
-                <% deadline = ActiveSupport::JSON.decode(summit.deadline) %>
-                <% deadline["content"].each do |d| %>
-                  <% if d["text"].length > 0 %>
-                    <%= d["text"] + ": " %>
-                  <% end %>
-                  <%= Time.parse(d["date"]).strftime("%b %d, %Y") %><br/>
+              <% deadline = ActiveSupport::JSON.decode(summit.deadline) %>
+              <% deadline["content"].each do |d| %>
+                <% if d["text"].length > 0 %>
+                  <%= d["text"] + ": " %>
                 <% end %>
-                <span class="data" style="display:none;"><%= Time.parse(deadline["content"][0]["date"]).to_time.to_i %></span>
+                <%= d["date"].present? ? Time.parse(d["date"]).strftime("%b %d, %Y") : "???" %><br/>
+              <% end %>
+              <span class="data" style="display:none;"><%= deadline["content"][0]["date"].present? ? Time.parse(deadline["content"][0]["date"]).to_time.to_i : "0" %></span>
             </div>
             <div class="summit-location"><span class="data"><%= summit.location_country %>, <%= summit.location_state %>, <%= summit.location_city %></span></div>
             <div class="summit-language"><span class="data"><%= summit.language %></span></div>
@@ -87,13 +95,13 @@
     <div class="col-sm-4 col-md-4 text-center">
       <%= image_tag "collective.png"%>
       <h3>Collectively Owned</h3>
-      <p>There is no one owner of this listing. The list as well as the code are maintained collectively by the community.</p>
+      <p>There is no one owner of this listing. The list as well as the code are maintained collectively by the community. This is like the Wikipedia for social entrepreneurship summits.</p>
     </div>
     
     <div class="col-sm-4 col-md-4 text-center">
       <%= image_tag "world.png"%>
       <h3>Open Source</h3>
-      <p>The entire code is accessible on Github, and you are most welcome to copy, remix, and redistribute.</p>
+      <p>The entire code is accessible on Github, and you are most welcome to copy, remix, and redistribute. Fork us <%= link_to "here", "www.balbabl.de", :target => "_blank" %>.</p>
     </div>
   </div>
 

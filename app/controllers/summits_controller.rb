@@ -4,7 +4,8 @@ class SummitsController < ApplicationController
   # GET /summits
   # GET /summits.json
   def index
-    @summits = Summit.where(:published => true).order(:date_start)
+    #@summits = Summit.where(:published => true).order(:date_start)
+    @summits = Summit.order(:date_start)
   end
 
   # GET /summits/1
@@ -14,8 +15,8 @@ class SummitsController < ApplicationController
 
   # GET /summits/new
   def new
-    redirect_to :action => :new_public
-    #@summit = Summit.new
+    @summit = Summit.new
+    render 'new_public'
   end
   
   def new_public
@@ -66,7 +67,7 @@ class SummitsController < ApplicationController
         format.html { redirect_to @summit, notice: 'Summit was successfully created.' }
         #format.json { render :show, status: :created, location: @summit }
       else
-        format.html { render :new }
+        format.html { render :new_public }
         #format.json { render json: @summit.errors, status: :unprocessable_entity }
       end
     end
@@ -75,40 +76,40 @@ class SummitsController < ApplicationController
   # PATCH/PUT /summits/1
   # PATCH/PUT /summits/1.json
   def update
-    if session[:edit_code].present? && session[:edit_code] == @summit.edit_code
-      @summit.currency = "$"
-      @summit.location_country = "USA"
+    #if session[:edit_code].present? && session[:edit_code] == @summit.edit_code
+      #@summit.currency = "$"
+      #@summit.location_country = "USA"
 
       @summit.deadline = create_deadline_json
             
-      @summit.published = false
+      #@summit.published = false
       
-      @summit.attributes = summit_params
+      #@summit.attributes = summit_params
       
-      if @summit.valid?
-        @summit.published = true
-      end
+      #if @summit.valid?
+      #  @summit.published = true
+      #end
       
       
-      if @summit.save(validate: false)
+      if @summit.update_attributes(summit_params)
         # log out && redirect
-        if @summit.published
-          reset_session
+        #if @summit.published
+        #  reset_session
           #render("edit/edit")
           redirect_to @summit
 #            format.html { redirect_to @summit, notice: 'Summit was successfully updated.' }
-        else
+      else
           #@summit.validation_check
           #@summit.errors.add(:name, "roflmao")
           #@summit.valid?
           render "edit/edit"
-        end
-      else
-        render "edit/edit"
       end
-    else
-      redirect_to @summit
-    end
+      #else
+      #  render "edit/edit"
+      #end
+    #else
+    #  redirect_to @summit
+    #end
   end
 
   # DELETE /summits/1
@@ -128,6 +129,8 @@ class SummitsController < ApplicationController
     end
   
     def create_deadline_json
+      return "" if params["deadline"]["dates"].size == 0
+      
       unencoded = '{ "content": ['
       if(params["deadline"]["dates"].size == 1)
         unencoded += '{ "text": "", "date": "'+ params["deadline"]["dates"][0] + '"} '
@@ -146,7 +149,7 @@ class SummitsController < ApplicationController
       params.require(:summit).permit(:name, :deadline, :application_link, :location_city, :location_state, :location_country, :language, :date_start, :date_end, :cost, :currency, :fields, :idea_stage, :planning_stage, :implementation_stage, :operating_stage, :description, :contact_website, :contact_email, :admin_email, :admin_url)
     end
   
-  
+    
     # send out an email with the edit code for the new private summit
     def send_edit_code email, edit_code
     
