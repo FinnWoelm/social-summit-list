@@ -2,14 +2,15 @@ Rails.application.routes.draw do
   
 
   get 'summits/new_public_summit'     => 'summits#new_public', as: :new_public_summit
-  match 'summits/new_private_summit'  => 'summits#new_private', :via => :post, as: :new_private_summit
-  resources :summits, :except => [:edit, :delete, :destroy]
+  # no private summits as of right now
+  #match 'summits/new_private_summit'  => 'summits#new_private', :via => :post, as: :new_private_summit
+  resources :summits, :except => [:delete, :destroy]
   
   
   # path for editing a summit
-  get 'edit/:edit_code'                 => 'edit#edit', as: :edit_summit
-  get 'edit/:edit_code/login'           => 'edit#login'
-  match 'edit/:edit_code/attempt_login' => 'edit#attempt_login', :via => :post
+  #get 'edit/:edit_code'                 => 'edit#edit', as: :edit_summit
+  #get 'edit/:edit_code/login'           => 'edit#login'
+  #match 'edit/:edit_code/attempt_login' => 'edit#attempt_login', :via => :post
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

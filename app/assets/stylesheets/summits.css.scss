@@ -132,6 +132,10 @@
     margin: 0 0 10px 0;
   }
   
+  small {
+    color: $background-color2; 
+  }
+  
   .area {
     padding-left: 50px;
     padding-right: 50px;
@@ -143,15 +147,20 @@
   
   .back-link{
     background-color: $text-color;
-    color: white;
+    color: $background-color;
   }
   
   .back-link:hover {
     text-decoration: none; 
   }
+
+
+  hr {
+    border-color: $background-color2;    
+  }
   
   .facts {
-    
+
     table {
       width: 100%;
       
@@ -196,7 +205,7 @@
     div {
       padding: $padding-base-vertical $padding-base-horizontal;
       display: table-cell;
-      color: $text-color2;
+      color: $text-color;
       //white-space: pre-line;
     }
     
@@ -209,7 +218,7 @@
   }
   
   .tbody > a:nth-child(2n+1) > div {
-    background-color: lighten($background-color, 10%);
+    background-color: darken($background-color, 0%);
   }
   
   // remove text decoration
@@ -220,13 +229,15 @@
   // white highlight on mouse over
   .tbody > a:hover > div,
   .tbody > a:focus > div {
-      background-color: lighten($text-color, 20%) !important; 
+      background-color: lighten($text-color, 20%) !important;
+      color: $brand-primary;
   }
   
   // TABLE HEADER
   .thead > a {
     
     div {
+      color: $text-color2;
       border-left: 1px solid $text-color;
       border-bottom: 2px solid $text-color;
       border-top: 1px solid $gray-lighter;
