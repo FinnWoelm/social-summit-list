@@ -62,6 +62,10 @@ body {
     //color: $highlight-color; 
   }
   
+  a {
+    color: lighten($background-color2, 20%);  
+  }
+  
 }
 
 .area.no-padding {
