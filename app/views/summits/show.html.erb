@@ -1,14 +1,21 @@
+
+<div id="info">
+  <p>Last edit was made <%= time_ago_in_words(@summit.updated_at) %> ago. If information is inaccurate or missing, please make corrections by <%= link_to "editing this summit", edit_summit_path(@summit) %>.</p>
+</div>
+
 <div id="show">
   <div class="area">
     <div class="row">
       <h1 class="text-center"><%= @summit.name %></h1>
       <% if !@summit.contact_website.blank? %>
-      <h3 class="text-center"><i class="fa fa-globe"></i> <%= link_to @summit.contact_website, @summit.contact_website, :target => "_blank" %></h3>
+      <h3 class="text-center"><i class="fa fa-globe"></i> 
+        <%= link_to @summit.contact_website, url_with_protocol(@summit.contact_website), :target => "_blank"
+%></h3>
       <% end %>
       <% if !@summit.contact_email.blank? %>
       <h3 class="text-center"><i class="fa fa-envelope"></i> <%= mail_to @summit.contact_email, @summit.contact_email, :target => "_blank" %></h3>
       <% end %>
-      <h3 class="text-center"><br/><%= @summit.date_start.strftime("%b %d, %Y") + " - " + @summit.date_end.strftime("%b %d, %Y") %> <small>in</small> <%= @summit.location_city + ", " + (!@summit.location_state.blank? ? @summit.location_state + ", " : "") + @summit.location_country %></h3>
+      <h3 class="text-center"><%= @summit.date_start.strftime("%b %d, %Y") + " - " + @summit.date_end.strftime("%b %d, %Y") %> <small>in</small> <%= @summit.location_city + ", " + (!@summit.location_state.blank? ? @summit.location_state + ", " : "") + @summit.location_country %></h3>
     </div>
   </div>
   
@@ -44,9 +51,9 @@
               <td>
                 <b><u>Application</u></b><br>
                 <% deadline = ActiveSupport::JSON.decode(@summit.deadline) %>
-                Deadline: <%= Time.parse(deadline["content"][0]["date"]).strftime("%b %d, %Y") %><br/>
-                <% if @summit.application_link %>
-                Link: <a href="<%= @summit.application_link %>" target="_blank">Apply now!</a>
+                Deadline: <%= deadline["content"][0]["date"].present? ? Time.parse(deadline["content"][0]["date"]).strftime("%b %d, %Y") : "???" %><br/>
+                <% if @summit.application_link.present? %>
+                  <%= link_to 'Apply now <i class="fa fa-external-link"></i>'.html_safe, url_with_protocol(@summit.application_link), :target => "_blank" %>
                 <% end %>
               </td>
             </tr>

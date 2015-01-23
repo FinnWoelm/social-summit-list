@@ -1,100 +1,188 @@
-<div class="area">
-  <h1 class="text-center">Find awesome entrepreneurship summits around the world!</h1>
+<div id="index">
+  <div class="area" style="border-bottom: 1px solid rgba(255, 255, 255, .3);">
+    <h1 class="text-center">Find awesome entrepreneurship summits around the world!</h1>
 
-  <div class="row">
-    <div class="col-md-3 col-xs-2"></div>
-    <div class="col-md-6 col-xs-8">
-      <%= link_to "Add my Summit!", new_summit_path, :class => "btn btn-lg btn-primary btn-block" %>
-    </div>  
-    <div class="col-md-3 col-xs-2"></div>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6 ">
+        <%= link_to "Add a Summit!", new_summit_path, :class => "btn btn-lg btn-block btn-primary" %>
+      </div>  
+      <div class="col-md-3 "></div>
+    </div>
   </div>
-</div>
 
-<div class="area no-padding">
-  <h1 class="text-center">Summit Listing</h1>
-  <div class="table-responsive">
-    <div class="table table-hover table-striped table-links">
-      <div class="thead">  
-        <a>
-          <div><!--<button class="btn btn-xs btn-primary"><i class="fa fa-cog"></i></button>--></div>
-          <div class="sortable" data-sort_by="summit-name" data-sort_type="abc">Name</div>
-          <div class="sortable" data-sort_by="summit-deadline" data-sort_type="number">App. Deadline</div>
-          <div class="sortable" data-sort_by="summit-location" data-sort_type="abc">Location</div>
-          <div class="sortable" data-sort_by="summit-language" data-sort_type="abc">Language</div>
-          <div class="sortable" data-sort_by="summit-startdate" data-sort_type="number">Date</div>
-          <div class="sortable" data-sort_by="summit-duration" data-sort_type="number">Duration</div>
-          <div class="sortable" data-sort_by="summit-cost" data-sort_type="number">Cost</div>
-          <div class="sortable" data-sort_by="summit-fields" data-sort_type="abc">Fields</div>
-          <div class="sortable" data-sort_by="summit-project_stages" data-sort_type="number">Project Stages</div>
-        </a>
+  <div style="display:none;">
+  </div>
+  <div class="area">
+    <h3><span id="showFilters" class="clickable"><i class="fa fa-caret-right"></i><i style="display:none;" class="fa fa-caret-down"></i> Search Filters</span> <button id="addFilter" class="btn btn-sm btn-default"><i class="fa fa-plus"></i> Add Filter</button></h3>
+
+
+    <!-- OUR SELECTORS -->
+    <div id="original" style="display:none;">
+      <form class="form-inline">
+        <span class="remove-button btn btn-xs btn-danger"><i class="fa fa-close"></i></span>
+        Summits that have
+        <div class="primary-select form-group">
+          <select class="form-control">
+            <option class="date" value="startdate" selected="selected">a starting date</option>
+            <option class="text" value="name">a name</option>
+            <option class="date" value="deadline">a deadline</option>
+            <option class="number" value="duration">a duration (days)</option>
+            <option class="number" value="cost">a price ($)</option>
+            <option class="text" value="location">a location</option>
+            <option class="stages" value="stages">a focus on the stages</option>
+          </select>
+        </div>
+
+      </form>
+
+        <div class="secondary-select dateSelect form-group">
+          <label></label>
+          <select class="form-control">
+            <option value="after" selected="selected">after</option>
+            <option value="before">before</option>
+          </select>
+        </div>
+
+        <div class="secondary-select dateSelect form-group">
+          <label></label>
+          <input type="date" placeholder="Date" class="form-control datetimepicker full-date-range" data-date-format="YYYY/MM/DD" />
+        </div>
+
+        <div class="secondary-select textSelect form-group">
+          <label></label> containing the phrase <input placeholder="rainbows" class="form-control">
+        </div>
+
+        <div class="secondary-select numberSelect form-group">
+          <label></label>
+          <select class="form-control" >
+            <option selected="selected">below</option>
+            <option>above</option>
+          </select>
+        </div>
+
+        <div class="secondary-select numberSelect form-group">
+          <label></label>
+          <input type="number" placeholder="Number" class="form-control" >
+        </div>
+
+
+        <div class="secondary-select stagesSelect checkbox">
+          <label></label>
+          <label>
+            <input type="checkbox"> <i class="fa fa-lightbulb-o"></i> Idea &nbsp;&nbsp;
+          </label>
+        </div>
+        <div class="secondary-select stagesSelect checkbox">
+          <label>
+            <input type="checkbox"> <i class="fa fa-file-text-o"></i> Planning &nbsp;&nbsp;
+          </label>
+        </div>
+        <div class="secondary-select stagesSelect checkbox">
+          <label>
+            <input type="checkbox"> <i class="fa fa-suitcase"></i> Implementation &nbsp;&nbsp;
+          </label>
+        </div>
+        <div class="secondary-select stagesSelect checkbox">
+          <label>
+            <input type="checkbox"> <i class="fa fa-truck"></i> Launched &amp; Running &nbsp;&nbsp;
+          </label>
+        </div>
       </div>
 
+    <p style="display: none;"><br/><button id="updateButton" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</button></p>
+  </div>
+  <div style="display:none;"></div>
 
-      <div class="tbody">
-        <% @summits.each do |summit| %>
-          <%= link_to summit_path(summit.id), :id => "summit-" + summit.id.to_s do %>
-            <div></div>
-            <div class="summit-name"><span class="data"><%= summit.name %></span></div>
-            <div class="summit-deadline">
+  <div class="area no-padding">
+    <!--<h1 class="text-center">Summit Listing</h1>-->
+    <div class="table-responsive">
+      <div class="table table-hover table-striped table-links">
+        <div class="thead">  
+          <a>
+            <div><!--<button class="btn btn-xs btn-primary"><i class="fa fa-cog"></i></button>--></div>
+            <div class="sortable" data-sort_by="summit-name" data-sort_type="abc">Name</div>
+            <div class="sortable" data-sort_by="summit-deadline" data-sort_type="number">App. Deadline</div>
+            <div class="sortable" data-sort_by="summit-location" data-sort_type="abc">Location</div>
+            <div class="sortable" data-sort_by="summit-language" data-sort_type="abc">Language</div>
+            <div class="sortable" data-sort_by="summit-startdate" data-sort_type="number">Date</div>
+            <div class="sortable" data-sort_by="summit-duration" data-sort_type="number">Duration</div>
+            <div class="sortable" data-sort_by="summit-cost" data-sort_type="number">Cost</div>
+            <div class="sortable" data-sort_by="summit-fields" data-sort_type="abc">Fields</div>
+            <div class="sortable" data-sort_by="summit-project_stages" data-sort_type="number">Project Stages</div>
+          </a>
+        </div>
+
+
+        <div class="tbody">
+          <% @summits.each do |summit| %>
+            <%= link_to summit_path(summit.id), :id => "summit-" + summit.id.to_s, :class => cycle("odd", "") do %>
+              <div></div>
+              <div class="summit-name"><span class="data"><%= summit.name %></span></div>
+              <div class="summit-deadline">
                 <% deadline = ActiveSupport::JSON.decode(summit.deadline) %>
                 <% deadline["content"].each do |d| %>
                   <% if d["text"].length > 0 %>
                     <%= d["text"] + ": " %>
                   <% end %>
-                  <%= Time.parse(d["date"]).strftime("%b %d, %Y") %><br/>
+                  <%= d["date"].present? ? Time.parse(d["date"]).strftime("%b %d, %Y") : "???" %><br/>
                 <% end %>
-                <span class="data" style="display:none;"><%= Time.parse(deadline["content"][0]["date"]).to_time.to_i %></span>
-            </div>
-            <div class="summit-location"><span class="data"><%= summit.location_country %>, <%= summit.location_state %>, <%= summit.location_city %></span></div>
-            <div class="summit-language"><span class="data"><%= summit.language %></span></div>
-            <div class="summit-startdate"><%= summit.date_start.strftime("%b %d, %Y") %><span class="data" style="display: none;"><%= summit.date_start.to_time.to_i %></span></div>
-            <div class="summit-duration"><span class="data"><%= (summit.date_end - summit.date_start + 1).to_i %></span> day(s)</div>
-            <div class="summit-cost"><%= summit.currency %><span class="data"><%= summit.cost %></span></div>
-            <div class="summit-fields"><span class="data"><%= summit.fields %></span></div>
-            <div class="summit-project_stages">
-              <i class="btn-xs fa fa-lightbulb-o <%= summit.idea_stage ? '' : 'text-muted' %>" title="Idea Stage"></i>
-              <i class="btn-xs fa fa-file-text-o <%= summit.planning_stage ? '' : 'text-muted' %>" title="Planning Stage"></i>
-              <i class="btn-xs fa fa-suitcase <%= summit.implementation_stage ? '' : 'text-muted' %>" title="Implementation Stage"></i>
-              <i class="btn-xs fa fa-truck <%= summit.operating_stage ? '' : 'text-muted' %>" title="Launched & Running"></i>
-              <%
-                stage_score = 0
-                summit.idea_stage ? stage_score += 10 : ""
-                summit.planning_stage ? stage_score += 11 : ""
-                summit.implementation_stage ? stage_score += 12 : ""
-                summit.operating_stage ? stage_score += 13 : ""
-              %>
-              <span class="data" style="display: none;"><%= stage_score %></span>
-            </div>
-          </a>
+                <span class="data" style="display:none;"><%= deadline["content"][0]["date"].present? ? Time.parse(deadline["content"][0]["date"]).to_time.to_i : "0" %></span>
+              </div>
+              <div class="summit-location"><span class="data"><%= summit.location_country %>, <%= summit.location_state %>, <%= summit.location_city %></span></div>
+              <div class="summit-language"><span class="data"><%= summit.language %></span></div>
+              <div class="summit-startdate"><%= summit.date_start.strftime("%b %d, %Y") %><span class="data" style="display: none;"><%= summit.date_start.to_time.to_i %></span></div>
+              <div class="summit-duration"><span class="data"><%= (summit.date_end - summit.date_start + 1).to_i %></span> day(s)</div>
+              <div class="summit-cost"><span class="data"><%= summit.currency %><%= summit.cost %></span></div>
+              <div class="summit-fields"><span class="data"><%= summit.fields %></span></div>
+              <div class="summit-project_stages">
+                <i class="btn-xs fa fa-lightbulb-o <%= summit.idea_stage ? '' : 'text-muted' %>" title="Idea Stage"></i>
+                <i class="btn-xs fa fa-file-text-o <%= summit.planning_stage ? '' : 'text-muted' %>" title="Planning Stage"></i>
+                <i class="btn-xs fa fa-suitcase <%= summit.implementation_stage ? '' : 'text-muted' %>" title="Implementation Stage"></i>
+                <i class="btn-xs fa fa-truck <%= summit.operating_stage ? '' : 'text-muted' %>" title="Launched & Running"></i>
+                <%
+                  stage_score = 0
+                  summit.idea_stage ? stage_score += 10 : ""
+                  summit.planning_stage ? stage_score += 11 : ""
+                  summit.implementation_stage ? stage_score += 12 : ""
+                  summit.operating_stage ? stage_score += 13 : ""
+                %>
+                <span class="data" style="display: none;"><%= stage_score %></span>
+                <span class="idea" style="display: none;"><%= summit.idea_stage %></span>
+                <span class="planning" style="display: none;"><%= summit.planning_stage %></span>
+                <span class="implementation" style="display: none;"><%= summit.implementation_stage %></span>
+                <span class="operating" style="display: none;"><%= summit.operating_stage %></span>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
-    </div>  
+        </div>
+      </div>  
+    </div>
   </div>
-</div>
 
-<%# icons from https://www.iconfinder.com/iconsets/49handdrawing
-%>
+  <%# icons from https://www.iconfinder.com/iconsets/49handdrawing
+  %>
 
-<div class="area">
-  <div class="row">
-    <div class="col-sm-4 col-md-4 text-center">
-      <%= image_tag "heart.png"%>
-      <h3>Made with Love</h3>
-      <p>This platform was built based on a belief in the goodness entrepreneurs bring into the world. 100% love, 0% commercialization.</p>
+  <div class="area">
+    <div class="row">
+      <div class="col-sm-4 col-md-4 text-center">
+        <%= image_tag "heart.png"%>
+        <h3>Made with Love</h3>
+        <p>This platform was built based on a belief in the goodness entrepreneurs bring into the world. 100% love, 0% commercialization.</p>
+      </div>
+
+      <div class="col-sm-4 col-md-4 text-center">
+        <%= image_tag "collective.png"%>
+        <h3>Collectively Owned</h3>
+        <p>There is no one owner of this listing. The list as well as the code are maintained collectively by the community. This is like the Wikipedia for social entrepreneurship summits.</p>
+      </div>
+      <div class="col-sm-4 col-md-4 text-center">
+        <%= image_tag "world.png"%>
+        <h3>Open Source</h3>
+        <p>The entire code is accessible on Github, and you are most welcome to copy, remix, and redistribute. Fork us <%= link_to "here", "www.balbabl.de", :target => "_blank" %>.</p>
+      </div>
     </div>
-    
-    <div class="col-sm-4 col-md-4 text-center">
-      <%= image_tag "collective.png"%>
-      <h3>Collectively Owned</h3>
-      <p>There is no one owner of this listing. The list as well as the code are maintained collectively by the community.</p>
-    </div>
-    
-    <div class="col-sm-4 col-md-4 text-center">
-      <%= image_tag "world.png"%>
-      <h3>Open Source</h3>
-      <p>The entire code is accessible on Github, and you are most welcome to copy, remix, and redistribute.</p>
-    </div>
+
   </div>
 
 </div>

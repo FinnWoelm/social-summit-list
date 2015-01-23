@@ -1,5 +1,0 @@
-<h1>New summit</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', summits_path %>

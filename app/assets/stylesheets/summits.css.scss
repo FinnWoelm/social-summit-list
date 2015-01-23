@@ -2,12 +2,38 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#edit {
+#index {
+ 
+  form {
+    padding-bottom: 10px;
+  }
   
-  .back-link {
+}
+
+#show, #edit {
+  
+  .back-link{
+    background-color: $text-color;
+    color: $background-color;
     border: none;
     width: 100%;
-    font-size: 4em;
+  }
+  
+  .back-link h1, input.back-link {
+   
+      font-size: 4em; 
+  }
+  
+  .back-link:hover {
+    text-decoration: none; 
+  } 
+  
+}
+
+#edit {
+  
+  small {
+    color: $background-color2; 
   }
   
   label {
@@ -61,7 +87,7 @@
   .input-hidden .datetimepicker {
     //text-align: left;
     display: inline;
-    width: 150px !important;
+    width: 200px !important;
     //width: 150px;
   }
   
@@ -75,7 +101,7 @@
 
   h3 {
     font-weight: bold;
-    margin: 0 0 10px 0;
+    padding: 0 0 10px 0;
   }
   
   .area {
@@ -85,15 +111,6 @@
   
   .category {
     font-weight: bold;
-  }
-  
-  .back-link{
-    background-color: $text-color;
-    color: white;
-  }
-  
-  .back-link:hover {
-    text-decoration: none; 
   }
   
   .facts {
@@ -124,12 +141,16 @@
 
 #show {
   h1 {
-    padding: 0px 0px 0px 0px; 
+    padding: 0px 0px 10px 0px; 
   }
 
   h3 {
     font-weight: bold;
-    margin: 0 0 10px 0;
+    padding: 0 0 10px 0;
+  }
+  
+  small {
+    color: $background-color2; 
   }
   
   .area {
@@ -140,18 +161,13 @@
   .category {
     font-weight: bold;
   }
-  
-  .back-link{
-    background-color: $text-color;
-    color: white;
-  }
-  
-  .back-link:hover {
-    text-decoration: none; 
+
+  hr {
+    border-color: $background-color2;    
   }
   
   .facts {
-    
+
     table {
       width: 100%;
       
@@ -196,7 +212,7 @@
     div {
       padding: $padding-base-vertical $padding-base-horizontal;
       display: table-cell;
-      color: $text-color2;
+      color: $text-color;
       //white-space: pre-line;
     }
     
@@ -208,8 +224,12 @@
     }*/
   }
   
-  .tbody > a:nth-child(2n+1) > div {
-    background-color: lighten($background-color, 10%);
+  /*.tbody > a:nth-child(2n+1) > div {
+    background-color: darken($background-color, 0%);
+  }*/
+  
+  .tbody > a.odd {
+    background-color: darken($background-color, 0%);
   }
   
   // remove text decoration
@@ -220,13 +240,15 @@
   // white highlight on mouse over
   .tbody > a:hover > div,
   .tbody > a:focus > div {
-      background-color: lighten($text-color, 20%) !important; 
+      background-color: lighten($text-color, 20%) !important;
+      color: $brand-primary;
   }
   
   // TABLE HEADER
   .thead > a {
     
     div {
+      color: $text-color2;
       border-left: 1px solid $text-color;
       border-bottom: 2px solid $text-color;
       border-top: 1px solid $gray-lighter;
@@ -265,9 +287,18 @@
 
 
 .fa.text-muted {
-  color: $gray-lighter;
+  color: rgba(255, 255, 255, .1);
 }
 
 .summit-project_stages {
   white-space: nowrap;
 }
+
+  .back-link{
+    background-color: $text-color;
+    color: white;
+  }
+  
+  .back-link:hover {
+    text-decoration: none; 
+  }
