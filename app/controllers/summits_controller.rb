@@ -146,7 +146,7 @@ class SummitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def summit_params
-      params.require(:summit).permit(:name, :deadline, :application_link, :location_city, :location_state, :location_country, :language, :date_start, :date_end, :cost, :currency, :fields, :idea_stage, :planning_stage, :implementation_stage, :operating_stage, :description, :contact_website, :contact_email, :admin_email, :admin_url)
+      params.require(:summit).permit(:name, :deadline, :application_link, :location_city, :location_state, :location_country, :language, :date_start, :date_end, :cost, :currency, :fields, :idea_stage, :planning_stage, :implementation_stage, :operating_stage, :description, :requirements, :contact_website, :contact_email, :admin_email, :admin_url)
     end
   
     

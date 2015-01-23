@@ -50,6 +50,18 @@ body {
     margin: 0px;
     padding: 30px 0px;
   }
+  
+  h3 {
+    background-color: inherit;
+    margin: 0px;
+    padding: 0px 0px 10px 0px;
+  }
+  
+  input, textarea, select {
+    color: black;
+    //color: $highlight-color; 
+  }
+  
 }
 
 .area.no-padding {
@@ -61,6 +73,10 @@ body {
   input, textarea, select {
     color: white;
     //color: $highlight-color; 
+  }
+  
+  a {
+    color: white;  
   }
 }
 
@@ -96,6 +112,14 @@ body {
 
 
 // fix for datepicker
-.bootstrap-datetimepicker-widget.dropdown-menu.bottom {
+.bootstrap-datetimepicker-widget.dropdown-menu {
   color: $background-color;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+ // color: $background-color;
 }

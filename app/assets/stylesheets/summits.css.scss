@@ -2,6 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#index {
+ 
+  form {
+    padding-bottom: 10px;
+  }
+  
+}
+
 #show, #edit {
   
   .back-link{
@@ -79,7 +87,7 @@
   .input-hidden .datetimepicker {
     //text-align: left;
     display: inline;
-    width: 150px !important;
+    width: 200px !important;
     //width: 150px;
   }
   
@@ -93,7 +101,7 @@
 
   h3 {
     font-weight: bold;
-    margin: 0 0 10px 0;
+    padding: 0 0 10px 0;
   }
   
   .area {
@@ -133,12 +141,12 @@
 
 #show {
   h1 {
-    padding: 0px 0px 0px 0px; 
+    padding: 0px 0px 10px 0px; 
   }
 
   h3 {
     font-weight: bold;
-    margin: 0 0 10px 0;
+    padding: 0 0 10px 0;
   }
   
   small {
@@ -216,7 +224,11 @@
     }*/
   }
   
-  .tbody > a:nth-child(2n+1) > div {
+  /*.tbody > a:nth-child(2n+1) > div {
+    background-color: darken($background-color, 0%);
+  }*/
+  
+  .tbody > a.odd {
     background-color: darken($background-color, 0%);
   }
   
