@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.0'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 
@@ -26,7 +26,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Use jquery ui in addition to jquery
-gem 'jquery-ui-rails'
+#gem 'jquery-ui-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Re-active the document.ready function for jQuery
@@ -46,7 +46,7 @@ gem 'spring',        group: :development
 gem 'unicorn'
 
 # Mandrill E-Mail
-gem 'mandrill-api'
+#gem 'mandrill-api'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

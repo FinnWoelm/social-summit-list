@@ -1,15 +1,5 @@
 $(document).ready(function(){
   
-  $("iframe").siblings().click( function() {
-    $("iframe").hide(); 
-    $("iframe").prev().hide();
-  });
-  
-  $("#feedbackButton").click( function() {
-    $("iframe").show();
-    $("iframe").prev().show();
-  });
-  
   // INDEX PAGE FILTERS //
   if ($("#index").length > 0 ) {
     
@@ -133,9 +123,9 @@ $(document).ready(function(){
     }
     else if($hash.length == 0) {
       today = new Date();
-      day = $.datepicker.formatDate('dd', today);
-      month = $.datepicker.formatDate('mm', today);
-      year = parseInt($.datepicker.formatDate('yy', today));
+      day = today.getDate();
+      month = today.getMonth()+1;
+      year = today.getFullYear();
       params = new Array("f=startdate", "v1=after", "v2="+year+"/"+month+"/"+day);
     }
     else {
@@ -280,10 +270,10 @@ $(document).ready(function(){
   /// ON NEW SUMMIT PAGE //
   if ($(".datetimepicker").length > 0) {
         
-    today = new Date();
-    day = $.datepicker.formatDate('dd', today);
-    month = $.datepicker.formatDate('mm', today);
-    year = parseInt($.datepicker.formatDate('yy', today));
+    //today = new Date();
+    //day = $.datepicker.formatDate('dd', today);
+    //month = $.datepicker.formatDate('mm', today);
+    //year = parseInt($.datepicker.formatDate('yy', today));
     
     $(".datetimepicker").each(function () {
       initializePicker($(this), $(this).hasClass("full-date-range"));

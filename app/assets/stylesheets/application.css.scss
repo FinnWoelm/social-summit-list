@@ -27,7 +27,7 @@ $highlight-color-2: $background-color;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import 'bootstrap-datetimepicker';
-@import 'jquery-ui/datepicker';
+//@import 'jquery-ui/datepicker';
 @import "font-awesome";
 @import 'summits';
 
@@ -72,10 +72,10 @@ body {
   padding: 0px; 
 }
 
-.area:nth-child(3n+1) {
+.area:nth-of-type(3n+1) {
   background-color: darken($background-color, 0%);; 
   input, textarea, select {
-    color: white;
+    color: white !important;
     //color: $highlight-color; 
   }
   
@@ -84,7 +84,7 @@ body {
   }
 }
 
-.area:nth-child(3n+2) {
+.area:nth-of-type(3n+2) {
   background-color: darken($background-color2, 10%);
   color: $text-color2;
   input, textarea, select {
